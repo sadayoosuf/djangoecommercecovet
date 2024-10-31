@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!--banner image-->
+
+
+	<div class="home">
+
+		<!-- Home Slider -->
+
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+
+				<!-- Home Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url('{% static "images/banner6.jpg" %}')"></div>
+					<div class="home_slider_content">
+						<div class="home_slider_content_inner">
+							<div class="home_slider_subtitle">get 20-30% off  </div>
+							<div class="home_slider_title">New Collection</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Home Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url('{% static "images/banner2.jpg" %}')"></div>
+					<div class="home_slider_content">
+						<div class="home_slider_content_inner">
+							<div class="home_slider_subtitle">get 40-70% off</div>
+							<div class="home_slider_title">New Collection</div>
+
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Home Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url('{% static "images/banner3.jpg" %}')"></div>
+					<div class="home_slider_content">
+						<div class="home_slider_content_inner">
+							<div class="home_slider_subtitle">get 10-20% off</div>
+							<div class="home_slider_title">New Collection</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Home Slider Nav -->
+
+			<div class="home_slider_next d-flex flex-column align-items-center justify-content-center"><img src="{% static 'images/arrow_r.png' %}" alt=""></div>
+
+
+		</div>
+	</div>
+
+<!--our collections-->
+<div class="promo" style="margin-bottom:100px;">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title_container text-center">
+						<div class="section_subtitle">only the best</div>
+						<div class="section_title">Our Collections</div>
+						<p class="text-center"> "Discover our exclusive collection of luxury jackets and bags, <br>
+            crafted in limited quantities with premium materials—elevate your style with these rare, <br>
+            must-have pieces designed for those who appreciate timeless elegance and unmatched quality."</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row promo_container g-4">
+				{% for i in cat %}
+
+				<!-- Promo Item -->
+				<div class="col-lg-4 promo_col mb-4">
+					<div class="promo_item">
+						<div class="promo_image">
+							<img src="{{i.image.url}}" alt="" height="400px" width="100%">
+							<div class="promo_content promo_content_1">
+								<div class="promo_title">{{i.name}}</div>
+								<div class="promo_subtitle">{{i.desc}}</div>
+							</div>
+						</div>
+						<div class="promo_link"><a href="{% url 'shop:products' i.id %}">Shop Now</a></div>
+					</div>
+				</div>
+				{% endfor %}
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+{% endblock %}

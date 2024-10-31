@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="container mt-5" style="margin-bottom:100px;">
+	<h3 class="text-center" style="margin-top:200px;">you have searched for <span>{{q}}</span></h3>
+</div>
+
+<div class="container mt-5" style="margin-bottom:100px;">
+    {% if product == None %}
+    <h3 class="text-center">No Results Found </h3>
+<!--    if no query entered by user -->
+    {% else %}
+<div class="row">
+	{% for i in product %}
+
+				<div class="col-sm-4">
+
+					<!-- Products -->
+
+					<div class="product_grid">
+
+						<!-- Product -->
+						<div class="product">
+<!--							on clicking image moves to detail page-->
+							<a href="{% url 'shop:detail' i.id %}">
+							<div class="product_image"><img src="{{i.image.url}}" alt="" height="400px" width="100%"></div>
+							</a>
+							<div class="rating rating_4" data-rating="4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="{% url 'shop:detail' i.id %}">{{i.name}}</a></div>
+									<div class="product_price">${{i.price}}</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="{% static 'images/shopping-bag-white.svg' %}" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+ 			{% empty %}
+<!--        if product sequence empty -->
+			<h3 class="text-center">No Results found</h3>
+	{% endfor %}
+
+</div>
+{% endif %}
+</div>
+
+{% endblock %}
+
+

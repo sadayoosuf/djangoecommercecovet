@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<center>
+    <div class="container p-5 shadow-lg p-3 mb-5  rounded " style="margin-bottom:100px;margin-top:200px;">
+        {% if status == True %}
+            <h3 class="text-center text-success"><i class="fa-solid fa-check"></i><br>payment successful</h3>
+        {% else %}
+            <h3 class="text-center text-danger">payment Failed.Please Try again...</h3>
+        {% endif %}
+
+
+    </div>
+</center>
+
+
+
+{% endblock %}
+
+
+

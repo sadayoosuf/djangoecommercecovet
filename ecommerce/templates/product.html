@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--category banner image-->
+<div class="row" style="margin-top:100px;">
+    <div class="col-12">
+        <img src="{{cat.image.url}}" height="400px" width="100%">
+    </div>
+
+</div>
+
+<!--category title and description-->
+<div class="row mt-3" style="margin-bottom:100px;">
+    <div class="col-12">
+        <h2 class="text-center fw-bold mt-2 mb-2">{{cat.name}}</h2>
+
+    </div>
+
+</div>
+
+<!--product cards display-->
+<div class="container mt-5" style="margin-bottom:100px;">
+<div class="row">
+	{% for i in product %}
+
+				<div class="col-sm-4">
+
+					<!-- Products -->
+
+					<div class="product_grid">
+
+						<!-- Product -->
+						<div class="product">
+<!--							on clicking image moves to detail page-->
+							<a href="{% url 'shop:detail' i.id %}">
+							<div class="product_image"><img src="{{i.image.url}}" alt="" height="400px" width="100%"></div>
+							</a>
+							<div class="rating rating_4" data-rating="4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="{% url 'shop:detail' i.id %}">{{i.name}}</a></div>
+									<div class="product_price">Rs: {{i.price}}</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="{% static 'images/shopping-bag-white.svg' %}" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+	{% endfor %}
+
+			</div>
+	</div>
+
+
+
+
+{% endblock %}

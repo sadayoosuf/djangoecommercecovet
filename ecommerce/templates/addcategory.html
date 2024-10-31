@@ -1,0 +1,71 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<style>
+.button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 142px;
+    height: 46px;
+    background: #937c6f; /* Button background color */
+    color: #FFFFFF; /* Text color */
+    font-size: 12px; /* Font size */
+    letter-spacing: 0.2em; /* Letter spacing */
+    text-transform: uppercase; /* Uppercase text */
+    border: none; /* No border */
+    outline: none; /* No outline */
+    cursor: pointer; /* Pointer cursor on hover */
+    -webkit-transition: all 200ms ease; /* Transition for Webkit browsers */
+    -moz-transition: all 200ms ease; /* Transition for Mozilla browsers */
+    -ms-transition: all 200ms ease; /* Transition for Microsoft browsers */
+    -o-transition: all 200ms ease; /* Transition for Opera browsers */
+    transition: all 200ms ease; /* Transition for all browsers */
+}
+
+/* Optional: Add a hover effect */
+.button:hover {
+    background: #b29b8e; /* Change the background color on hover */
+}
+</style>
+
+<h2 class="text-center" style="margin-top:200px;margin-bottom:50px;">ADD NEW CATEGORY</h2>
+<div class="container" style="width:40%;margin-bottom:100px;">
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+
+  <div class="mb-3">
+    <label class="form-label">Category Name</label>
+    <input type="text" class="form-control" name="n" placeholder="enter categoryname">
+  </div>
+
+    <div class="mb-3">
+    <label class="form-label" >Description</label>
+    <textarea class="form-control"  name="d" rows="4" required>add description here</textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Upload Image</label>
+    <input type="file" class="form-control" name="i">
+  </div>
+
+  <div>
+  <button type="submit" class="button">Add category</button>
+  </div>
+
+
+
+</form>
+
+</div>
+
+
+{% endblock %}
+
+

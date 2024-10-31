@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<title>Covet</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Wish shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link href="{% static 'plugins/colorbox/colorbox.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/cart.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/cart_responsive.css' %}">
+
+
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header" style="margin-bottom:100px;">
+		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
+			<div class="logo"><a href="#">Covet</a></div>
+			<nav class="main_nav">
+				<ul>
+					<li><a href="{% url 'shop:category' %}">home</a></li>
+					{% for i in links %}
+            			<li><a href="{% url 'shop:products' i.id %}">{{i.name}}</a></li>
+              		{% endfor %}
+				</ul>
+			</nav>
+			<div class="search header_search">
+					<form class="d-flex" method="POST" action="{% url 'search:search' %}">
+          				{% csrf_token %}
+        				<input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+        				<button class="btn " type="submit">Search</button>
+      				</form>
+				</div>
+			<div class="header_content ml-auto">
+				<div class="shopping">
+					<!-- Cart -->
+					{% if user.is_authenticated %}
+					{% if user.is_superuser == False %}
+					<a href="{% url 'cart:cartview' %}">
+						<div class="cart">
+							<img src="{% static 'images/shopping-bag.svg' %}" alt="">
+							<div class="cart_num_container">
+								<div class="cart_num_inner">
+									<div class="cart_num">{{c}}</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					{% endif %}
+					{% endif %}
+					<!-- Star -->
+<!--					<a href="#">-->
+<!--						<div class="star">-->
+<!--							<img src="{% static 'images/star.svg' %}" alt="">-->
+<!--							<div class="star_num_container">-->
+<!--								<div class="star_num_inner">-->
+<!--									<div class="star_num">0</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</a>-->
+					<!-- Avatar -->
+<!--					<a href="#">-->
+<!--						<div class="avatar">-->
+<!--							<img src="{% static 'images/avatar.svg' %}" alt="">-->
+<!--						</div>-->
+<!--					</a>-->
+				</div>
+			</div>
+
+			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+		<div class="logo menu_mm"><a href="#"></a></div>
+		<div class="search">
+			<form method="POST" action="{% url 'search:search' %}">
+				{% csrf_token %}
+				<input type="search" class="search_input menu_mm" required="required" name="q">
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="{% static 'images/magnifying-glass.svg' %}" alt=""></button>
+			</form>
+		</div>
+		<nav class="menu_nav">
+			<ul class="menu_mm">
+				<li class="menu_mm"><a href="{% url 'shop:category' %}">home</a></li>
+				{% for i in links %}
+            			<li><a href="{% url 'shop:products' i.id %}">{{i.name}}</a></li>
+				{% endfor %}
+
+				{% if user.is_authenticated %}
+				{% if user.is_superuser == False %}
+				<li class="menu_mm"><a href="{% url 'cart:orderview' %}">Your orders</a></li>
+				{% else %}
+					<li class="menu_mm"><a href="{% url 'shop:addcat' %}">Add category</a></li>
+					<li class="menu_mm"><a href="{% url 'shop:addpro' %}">Add product</a></li>
+				{% endif %}
+
+				<li class="menu_mm"><a href="{% url 'shop:logout' %}">Logout</a></li>
+				{% else %}
+				<li class="menu_mm"><a href="{% url 'shop:register' %}">Register</a></li>
+				<li class="menu_mm"><a href="{% url 'shop:login' %}">Login</a></li>
+
+				{% endif %}
+
+			</ul>
+		</nav>
+	</div>
+
+    {% block content %}
+    {% endblock %}
+
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col text-center">
+					<div class="footer_logo"><a href="#">Covet</a></div>
+					<nav class="footer_nav">
+						<ul>
+							<li><a href="{% url 'shop:category' %}">home</a></li>
+							{% for i in links %}
+            					<li><a href="{% url 'shop:products' i.id %}">{{i.name}}</a></li>
+              				{% endfor %}
+						</ul>
+					</nav>
+					<div class="footer_social">
+						<ul>
+							<li><a href="https://www.pinterest.com/sarahandaric/references-for-art/"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/sada-yoosuf-b60591258/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.instagram.com/sada._.yoosuf/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.reddit.com"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+							<li><a href="https://x.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'plugins/colorbox/jquery.colorbox-min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/cart_custom.js' %}"></script>
+</body>
+</html>
