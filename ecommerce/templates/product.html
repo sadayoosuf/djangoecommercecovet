@@ -50,8 +50,8 @@
 									<div class="product_price">Rs: {{i.price}}</div>
 								</div>
 								<div class="product_options">
-									<div class="product_buy product_option"><img src="{% static 'images/shopping-bag-white.svg' %}" alt=""></div>
-									<div class="product_fav product_option">+</div>
+									<div class="product_buy product_option"><a href="{% url 'cart:addtocart' i.id %}"><img src="{% static 'images/shopping-bag-white.svg' %}" alt=""></a></div>
+									<div class="product_fav product_option"><a href="{% url 'cart:addtocart' i.id %}" style="color: black;" target="_blank">+</a></div>
 								</div>
 							</div>
 						</div>
