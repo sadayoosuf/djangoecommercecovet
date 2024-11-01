@@ -51,6 +51,9 @@ python manage.py runserver
 
 With these steps, you should be able to set up and run your Covet e-commerce website smoothly.
 
+## Demo
+### Registration and Login
+
 
   
 
