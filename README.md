@@ -53,7 +53,13 @@ With these steps, you should be able to set up and run your Covet e-commerce web
 
 ## Demo
 ### Registration and Login
+- **Description**: Watch how to register and log in to the Covet e-commerce website.
+  
 https://github.com/user-attachments/assets/00e103fe-53a0-4eb9-84dd-86308e233368
+
+### Adding a Product to Cart from a Category
+- **Description**: See how to browse categories and add a product to your cart.
+  
 
 
   
