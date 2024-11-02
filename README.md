@@ -64,7 +64,13 @@ https://github.com/user-attachments/assets/d919ae7d-f2a2-4a48-9bf8-32ec8b281347
 
 ### Payment
 - **Description**: A demonstration of the payment process using Razorpay.
-- 
+ 
+https://github.com/user-attachments/assets/4330751e-cdb9-4396-a1ea-fb454839b1d3
+
+### Viewing Order Details
+- **Description**: How to view the details of an order after successful payment.
+
+  
   
 
 
