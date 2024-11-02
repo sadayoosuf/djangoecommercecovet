@@ -70,6 +70,8 @@ https://github.com/user-attachments/assets/4330751e-cdb9-4396-a1ea-fb454839b1d3
 ### Viewing Order Details
 - **Description**: How to view the details of an order after successful payment.
 
+  https://github.com/user-attachments/assets/5277f0e6-1c24-4b66-b3a0-3bfc8919bb6d
+
   
   
 
