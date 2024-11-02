@@ -60,6 +60,12 @@ https://github.com/user-attachments/assets/00e103fe-53a0-4eb9-84dd-86308e233368
 ### Adding a Product to Cart from a Category
 - **Description**: See how to browse categories and add a product to your cart.
   
+https://github.com/user-attachments/assets/d919ae7d-f2a2-4a48-9bf8-32ec8b281347
+
+### Payment
+- **Description**: A demonstration of the payment process using Razorpay.
+- 
+  
 
 
   
